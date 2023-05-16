@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=wave&color=auto&height=300&section=header&text=JIHWAN TIL PAGE&fontSize=50)
+![header](https://capsule-render.vercel.app/api?type=wave&color=auto&height=300&section=header&text="JIHWAN' TIL PAGE"&fontSize=50)
 
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=kimjihw&layout=compact)](https://github.com/kimjihw/github-readme-stats)
