@@ -144,15 +144,10 @@ class Person(pName : String, pAge : Int, pHeight : Double){
     var height : Double
 
     init{
-        name = pName
-        age = pAge
-        height = pHeight
-
-        init{
-            this.name = pName
-            this.age = pAge
-            this.height = pHeight
-        }
+        this.name = pName
+        this.age = pAge
+        this.height = pHeight
+        
     }
 
     constructor(name : String, age : Int, height : Double) : this(name,age){
@@ -165,3 +160,74 @@ class Person(pName : String, pAge : Int, pHeight : Double){
 부 생성자를 사용하여 객체를 만들면 this 키워드로 주 생성자를 호출하여 클래스 프로퍼티를 초기화₩
 
 클래스에 두 개 이상의 생성자가 있으면 각 생성자마다 다른 매개변수가 있어야 함
+
+[2023-05-31]
+
+1. 생성자 오버로딩
+
+생성자 오버로딩 : 클래스가 여러 생성자를 포함하고 각 생성자마다 다른 매개변수가 있는 경우 
+
+1.1) 기본 매개변수를 가진 생성자는 매개변수에 값을 전달하지 않고 객체를 만든 경우 컴파일러에서 자동으로 기본값을 할당
+
+기본 매개변수 장점 -> 부 생성자와 비교하면 매개변수 한 줄로 수백줄의 코드를 작성해야 하는 다른 방법보다 훨씬 많은 것을 얻을 수 있음
+
+ex)
+class Person(val name: String, var age : Int = 0, var height : Double = 0.0)
+
+이런식으로 init 블록을 통해 초기화하지 않아도 됨
+
+1.2) 명명된 매개변수를 가진 생성자
+
+코틀린은 클래스 인스턴스가 생성될 때 매개변수의 이름을 지정할 수 있음
+객체 생성을 좀 더 쉽게 읽을 수 있게 해줌
+모든 매개변수가 동일한 데이터 유형을 가질 때 매개변수에 잘못된 값을 전달할 가능성을 줄여줌
+
+ex) class Person(val name: String, var age : Int = 0, var height : Double = 0.0)
+
+val ali = Person(name = "Ali", age = 14...)
+
+불러올 때 이런식으로 진행
+
+2. 데이터 클래스
+
+애플리케이션을 개발하는 동안 클래스는 복잡한 작업을 수행하는 것뿐만 아니라 데이터 보유자로도 사용
+
+데이터 클래스는 다음과 같은 함수를 제공
+toString, equals, copy, hashcode
+
+2.1) equals
+
+데이터 클래스가 아닌 일반 클래스에서
+
+val abid = Person("Abid", 30, 9.0)
+val khan = Person("Abid", 30, 9.0)
+
+println(abid == khan) 을 하게되면 false 가 나오는데 그 이유는 값은 같지만 메모리가 달라서 그러함
+
+하지만 데이터클래스에서 == or .equals()를 사용하면 true가 출력이 됨
+
+2.2) copy
+
+데이터 클래스에서 copy는 객체 복제 이상의 역할을 함
+객체의 복사본을 만들 때 어떤 특성이든 변경가능
+ex)
+val jon = abid.copy(name = "Jon") or val jon = abid.copy() jon.name = "Jon"
+println(jon)
+
+이런 식으로 하면 사용자의 이름을 제외하고 다른 모든 것을 동일하게 유지하려면 name프로퍼티를 복사 함수의 매개변수로 전달하면 됨
+
+2.3) hashcode
+
+각 입력의 고유 번호를 생성하는 함수
+
+데이터 클래스 내에서 이 함수를 사용하고 있어 프로퍼티 값이 같다면 동일한 해시코드를 부여
+
+2.4) 객체 분해
+
+데이터 클래스를 사용하면 객체를 프로퍼티로 나눌 수 있음
+
+val abid = Person("abid", 40, 6.0)
+val (name, age, weight) = abid
+
+이런식으로 하면 각 프로퍼티는 고유한 변수에 할당이 됨
+
