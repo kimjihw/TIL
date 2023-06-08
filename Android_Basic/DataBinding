@@ -51,3 +51,35 @@ RXJava와 LiveData는 생명 주기를 제외하고는 비슷
 - 저장된 데이터를 업데이트하려면 MutableLiveData를 사용
 
 LiveData는 뭔가를 표시할 때 사용, MutableLiveData는 뭔가를 설정/변경할 때 사용
+
+[2023-06-08]
+
+1. ViewModel
+
+MVVM의 관점에서 봤을 때 View로부터 독립적이며, View가 필요로 하는 데이터만을 소유
+클래스가 거대해지는 것을 방지하고 유지보수, 재사용성 그리고 테스트 등을 용이하게 만들어 줌
+
+뷰가 사용할 메서드와 필드를 구현하고 뷰에게 상태 변화를 알리는 것 -> 뷰는 뷰 모델의 상태 변화를 옵저버함
+
+뷰 모델과 모델은 일대다 관계를 형성
+
+- 요청 프로세스 
+
+ViewModelProvider를 통해 ViewModel 인스턴스를 요청
+ViewModelProvider 내부에서는 ViewModelStoreOwner를 참조하여 ViewModelStore를 불러옴
+ViewModelStore에게 이미 저장된 ViewModel 인스턴스를 요청
+만약 ViewModelStore가 적합한 ViewModel 인스턴스를 가지고 있지 않다면 Factory를 통해 ViewModel 인스턴스 생성
+생성한 ViewModel 인스턴스를 ViewModelStore에 저장하고 만들어진 ViewModel 인스턴스를 클라이언트에게 반환
+
+
+1.1 AAC ViewModel
+
+Android의 수명 주기를 고려하여 UI 관련 데이터를 저장하고 관리하도록 설계
+
+ViewModel: 데이터를 관리하여 바인딩 해주고, 비즈니스 로직을 담당해 데이터를 처리하는 요소
+AAC ViewModel: Android의 수명 주기를 고려하여 UI 관련 데이터를 저장하고 관리하는 요소
+
+1.2 MVVM
+
+MVP 패턴에서 파생된 패턴
+비즈니스 로직과 프레젠테이션 로직을 UI로부터 분리하는 것이 목표
