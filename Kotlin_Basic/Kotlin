@@ -186,3 +186,4 @@ varargString("ett", "tva", "tre", "TT", "FF")
 vararg를 제일 뒤에 놓으면 앞에 a,b에 할당이 되고 나머지 인자들은 list에 배열 형식으로 담아지게 된다
 
 vararg를 앞에 두고 싶으면 나머지 인자들은 명명된 매개변수로 지정하면 가능
+
