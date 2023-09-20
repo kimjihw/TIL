@@ -41,3 +41,14 @@
 
 - 앱에서 처리하는 유형의 데이터별로 저장소 클래스가 있는 계층
 - 데이터소스에 접근할 수 있는 진입점음 레포지토리 밖에 없음
+
+2.2.1 repository 패턴
+
+- 데이터의 출처와 관계없이 동일한 인터페이스로 데이터에 접근할 수 있도록 하는 패턴 -> 뷰모델은 DataSources가 local인지 remote인지 모르고 레포지토리에만 접근가능함 -> Data Layer 캡슐화 -> 결합도가 낮아지는 효과가 있음
+
+- domain layer를 추가하면 data layer의 repository는 domain layer의 repository 인터페이스를 구현하는 repositoryImpl이 되어야 함
+
+2.2.2 mapper
+
+- data layer에는 entity, domain에는 model이 있는데 entity는 서버 데이터 구조를 그대로 가져온 데이터 클래스이고 model은 UI에 표시될 수 있는 정보를 담은 데이터
+- api응답을 받으면 entity를 model로 바꾸는 작업을 mapper 가 함
