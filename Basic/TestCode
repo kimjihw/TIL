@@ -1,0 +1,31 @@
+1. 테스트 코드 작성 이유
+
+- 프로젝트 규모가 작을 경우 문제가 되지 않을 수 있음 -> 앱 규모 커지면 빌드하는 시간 + 테스트를 UI로 직접 입력하느 시간이 길어짐
+
+2. Unit Test
+
+- module-name/src/test/java/ 하위에 테스트 코드 작성
+- 빠름
+- JVM에서 실행되는 테스트
+- 안드로이드 프레임워크와 종속성이 없거나 모의 객체를 생성할 수 있는 경우 이 테스트 사용
+- JUnit, Mockito, PowerMock, Truth, Robolectric
+
+3. Instrumentation Test
+
+- module-name/src/androidTest/java/ 하위에 테스트 코드 작성
+- 안드로이드 프레임워크에 종속성이 있는 테스트
+- 실제 안드로이드 기기나 에뮬레이터에서 실행되는 테스트
+- Espresso, UIAnimator, Robotium, Appium, Calabash
+- 느림
+
+4. 테스트 작성 법칙
+
+- Given : 특정 상황이 주어지고 ex) 잘못 된 이메일을 입력
+- When : (테스트하려는) 특정 액션이 발생했을 때 ex) 로그인 버튼을 클릭
+- Then : 변화 된 상태나 수행되는 행동을 검증 ex) 이메일 검증 실패 메시지를 보여줌
+
+5. 어노테이션
+
+- @Before : 반복되는 준비 작업을 별도의 메서드에 넣게 해 주고, 이를 매번 테스트 메서드를 실행하기 전에 먼저 자동으로 실행
+- @After : Before와 거의 같은 기능이지만 테스트 메서드 호출 후 실행
+- @get:Rule : Mockito를 사용한다는 규칙 설정
