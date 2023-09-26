@@ -1,0 +1,6 @@
+DI : 클래스 외부에서 객체를 생성하여 주입하는 것
+
+1. 어노테이션
+
+- @AndroidEntryPoint : Activity, Fragment, View, Service, BroadcastReceiver를 지원 -> 수명 주기를 따르는 종속 항목 컨테이너 생성
+- @HiltAndroidApp : Application 클래스에 설정하여 앱 수명 주기를 따름
