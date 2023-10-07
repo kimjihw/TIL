@@ -1,0 +1,14 @@
+var -> 가변 변수
+let -> 불변 변수
+
+print -> 내용 출력
+dump -> 상세한 내용 출력(크게 다를 거 없음)
+
+문자열 보간법 -> 문자열 내 \(변수)
+
+변수를 튜플 형태로 가능
+var person : (String, Int, Double) = ("name", 100, 100.0)
+
+dump(person)
+
+배열 -> var lst : Array<String> == var lst :[String]
