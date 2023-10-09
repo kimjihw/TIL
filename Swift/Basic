@@ -12,3 +12,23 @@ var person : (String, Int, Double) = ("name", 100, 100.0)
 dump(person)
 
 배열 -> var lst : Array<String> == var lst :[String]
+
+딕셔너리 -> var numberForName : [String, Int] = [:] 로 표현 가능
+
+열거형 -> enum School {
+    case primary, middle, high
+}
+
+항목 순회 -> School.allCases
+
+범위 연산자
+
+폐쇄 볌위 연산자 -> A...B
+반폐쇄 -> A..<B 
+단방향 -> A..., ...A, ..<A
+
+nill 병합 연산자 -> A ?? B : A가 nil 이면 B 반환 아니면 A 반환
+
+스위프트에서 if 구문은 조건의 값이 꼭 Bool 값이어야 함
+
+switch 또한 코틀린 처럼 break 필요없고 fallthrough 로 case 통합 가능, where 절도 가능
